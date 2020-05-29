@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Home
+{% endblock title %}
+
+{% block main %}
+<form method="POST" action="/summary">
+    {{ form.hidden_tag() }}
+
+    <fieldset class="form-group">
+        <legend class="border-bottom border-success">Reviews Analysis and Summarization</legend>
+        {{ form.link(id="url",
+        class="form-control form-control-lg",
+        placeholder="Enter Product URL here",
+        autocomplete="off", required=false) }}
+        
+	<br><br>
+	<b> OR </b>
+	<br><br>
+
+	{{ form.link(id="asin",
+        class="form-control form-control-lg",
+        placeholder="Enter Product ASIN here",
+        autocomplete="off", required=false) }}
+        
+	<br><br>
+	<b> OR </b>
+	<br><br>
+
+        {{ form.link(id="review",
+        class="form-control form-control-lg",
+        placeholder="Enter Product Review here",
+        autocomplete="off", required=false) }}
+	<br><br><br><br>
+    </fieldset>
+    <div class="form-group">
+        <label for="summary" class="text-success">Summary</label>
+        <textarea name="" id="summary" cols="35" rows="10" class="form-control form-control-lg" readonly>Your summary will be displayed here...
+        </textarea>
+    </div>
+    <div class="form-group">
+        <label for="keywords" class="text-success">Keywords</label>
+        <input id="keywords" type="text" value="Keywords will be displayed here..." class="form-control form-control-lg"
+            readonly>
+    </div>
+    <div class="form-group text-center">
+        {{ form.submit(class="btn btn-success btn-lg") }}
+    </div>
+</form>
+{% endblock main %}
